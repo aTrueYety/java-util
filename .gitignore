@@ -28,3 +28,6 @@ replay_pid*
 
 # Target folder
 target/
+
+# Main.java
+Main.java
