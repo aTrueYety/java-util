@@ -53,6 +53,7 @@ public class Input {
     while (true) {
       // Print message
       System.out.println(
+          // TODO: include simple name in profile
           message + " ( " + profile.getTarget().getSimpleName() + " in range [" + min + ", " + max
               + "] )");
 
