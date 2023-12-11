@@ -46,7 +46,7 @@ public class Input {
    * 
    * <pre>
    * {@code
-   * int input = Input.getInput(Input.INTEGER, new Scanner(System.in), 0, 10, "Enter a number");
+   * int input = Input.getInput(Input.INTEGER, System.in, 0, 10, "Enter a number");
    * }
    * </pre>
    * 
@@ -63,7 +63,7 @@ public class Input {
    *
    * @param <T>     the type of input requested
    * @param profile the profile to use of type T
-   * @param input   the scanner to use for getting input
+   * @param in      The inputstream to read input from
    * @param min     the minimum value of the input according to the profile range
    *                check
    * @param max     the maximum value of the input according to the profile range
@@ -93,7 +93,49 @@ public class Input {
    * is in the provided
    * range. If the input is invalid, the user is prompted to enter a new input.
    * This method uses
-   * the provided profile to get the input.
+   * the provided profile to get the input. The input is checked if it is in the
+   * provided range.
+   * 
+   * <p>
+   * Calling this method can look like this:
+   * 
+   * <pre>
+   * {@code
+   * int input = Input.getInput(Input.INTEGER, 0, 10, "Enter a number");
+   * }
+   * </pre>
+   * 
+   * The above code will prompt the user to enter a number between 0 and 10. If
+   * the user enters a
+   * number that is not in the range, the user will be prompted to enter a new
+   * number. The
+   * console output will look like this:
+   * <p>
+   * Enter a number ( Integer in range [0, 10] )
+   * </p>
+   * </p>
+   * 
+   *
+   * @param <T>     the type of input requested
+   * @param profile the profile to use of type T
+   * @param min     the minimum value of the input according to the profile range
+   *                check
+   * @param max     the maximum value of the input according to the profile range
+   *                check
+   * @param message the message to print before requesting input
+   */
+
+  public static <T> T getInput(
+      Profile<T> profile, int min, int max, String message) {
+    return getInput(profile, System.in, min, max, message);
+  }
+
+  /**
+   * Gets input from the user. The input is parsed if possible and checked if it
+   * is in the provided range. If the input is invalid, the user is prompted to
+   * enter a new input.
+   * This method uses
+   * the provided profile and System.in to get the input.
    * 
    * <p>
    * Calling this method can look like this:
